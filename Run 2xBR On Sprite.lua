@@ -234,12 +234,9 @@ sourceSprite:flatten()
 local sourceImage = app.activeImage:clone()
 app.undo()
 
+-- apply the scaling and save to the new sprite
 local scaledImage = applyFilter(sourceImage, 0, 0, sourceImage.width, sourceImage.height)
-scaledImage:saveAs(sourceSprite.filename.."_SCALED.aseprite")
+local scaledSprite = Sprite(sourceSprite.width * SCALE, sourceSprite.height * SCALE)
+scaledSprite.filename = sourceSprite.filename.."_2xBR"
 
--- -- create a new sprite and scale
--- app.transaction( function() 
-
---     -- local scaledSprite = Sprite(sourceSprite.width * SCALE, sourceSprite.height * SCALE)
-
--- end )
+scaledSprite:newCel(app.activeLayer, app.activeFrame, scaledImage, Point(0, 0))
