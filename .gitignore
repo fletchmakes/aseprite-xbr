@@ -1,3 +1,7 @@
+# Other ignores
+2xBR.js
+**.aseprite
+
 # Compiled Lua sources
 luac.out
 
